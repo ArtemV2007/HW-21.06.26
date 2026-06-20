@@ -5,17 +5,17 @@ import java.time.LocalDateTime;
 
 // 1. Говорим Hibernate, что этот класс является сущностью БД
 @Entity
-// 2. Указываем имя таблицы в PostgreSQL (желательно во множественном числе или по стандарту)
+// 2. Указываем имя таблицы в PostgreSQL
 @Table(name = "users")
 public class User {
 
     // 3. Помечаем поле как первичный ключ (Primary Key)
     @Id
-    // 4. Настраиваем автогенерацию ID. IDENTITY идеально подходит для SERIAL/BIGSERIAL в PostgreSQL
+    // 4. Настраиваем автогенерацию ID
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // 5. Размечаем обычные колонки. Можно указать ограничения (не null, длина, уникальность)
+    // 5. Размечаем обычные колонки
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
@@ -26,11 +26,11 @@ public class User {
     @Column(name = "age")
     private Integer age;
 
-    // Настраиваем имя колонки через snake_case, как принято в базах данных
+    // Настраиваем имя колонки
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    // Пустой конструктор ОБЯЗАТЕЛЕН для Hibernate, чтобы он мог восстанавливать объекты из БД
+    // Пустой конструктор обязателен для Hibernate, чтобы он мог восстанавливать объекты из БД
     public User() {}
 
     // Конструктор для удобного создания новых пользователей в коде
@@ -41,7 +41,7 @@ public class User {
         this.createdAt = LocalDateTime.now();
     }
 
-    // Геттеры и сеттеры (остаются без изменений)
+    // Геттеры и сеттеры
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
