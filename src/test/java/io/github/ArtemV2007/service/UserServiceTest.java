@@ -127,7 +127,7 @@ class UserServiceTest {
         userService.updateUser(userId, "Имя", "email@mail.com", 30);
 
         // Assert
-        // Проверяем, что метод update НИ РАЗУ не вызывался, так как юзера нет
+        // Проверяем, что метод update ни разу не вызывался, так как юзера нет
         verify(userDao, never()).update(any(User.class));
     }
 

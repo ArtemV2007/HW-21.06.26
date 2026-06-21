@@ -28,7 +28,7 @@ class UserDaoImplTest {
 
     private static UserDao userDao;
 
-    // 2. Настраиваем Hibernate на работу с контейнером ПЕРЕД запуском всех тестов
+    // 2. Настраиваем Hibernate на работу с контейнером перед запуском всех тестов
     @BeforeAll
     static void beforeAll() throws Exception {
         // Запускаем контейнер (если аннотация @Container не сделала это автоматически)
@@ -58,7 +58,7 @@ class UserDaoImplTest {
         userDao = new UserDaoImpl();
     }
 
-    // 3. Очищаем таблицу перед КАЖДЫМ тестом для обеспечения их полной изоляции
+    // 3. Очищаем таблицу перед каждым тестом для обеспечения их полной изоляции
     @BeforeEach
     void setUp() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
